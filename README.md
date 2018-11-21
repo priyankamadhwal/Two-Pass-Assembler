@@ -15,9 +15,9 @@ Follow	these	instructions	to	run	the	software:
 2. Open firstpass.jar.  
 ![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/resources/img3.PNG)  
   
-3. Enter the name of your file. (eg. swap.asm)  
-**(You can use the filename of files already present in docs folder)**  
-![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/resources/img4.PNG)  
+3. Enter the name of your file. (eg. swap.asm)   
+**(You can use the filename of files already present in docs folder)**    
+![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/resources/img4.png)  
   
 4. Click on **START PASS 1**.   
   
