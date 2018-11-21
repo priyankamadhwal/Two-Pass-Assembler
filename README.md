@@ -9,7 +9,7 @@ of	an	assembly	program.
 Follow	these	instructions	to	run	the	software:
   
 1. Add your .asm program file in the folder named docs.  
-[[https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/resources/img1.PNG]]
+[[https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/resources/img1.PNG|alt=img1]]
 
 ```
 2 .	Open	 firstpass.jar.
