@@ -6,11 +6,11 @@ of	an	assembly	program.
 
 ## Getting	Started
 
-Follow	these	instructions	to	run	the	softwware:
+Follow	these	instructions	to	run	the	software:
+  
+1. Add your .asm program file in the folder named docs.  
+[[https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/resources/img1.PNG]]
 
-```
-1 .	Add	your	 .asm program	file	in	the	folder	named	 docs.
-```
 ```
 2 .	Open	 firstpass.jar.
 ```
