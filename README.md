@@ -21,7 +21,7 @@ Follow	these	instructions	to	run	the	software:
   
 4. Click on **START PASS 1**.   
   
-5. If there are no errors, click on **SHOW SYMBOL TABLE**.
+5. If there are no errors, click on **SHOW SYMBOL TABLE**.  
 ![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/resources/img5.PNG)  
   
 The	symbol	table	gets	displayed.  
