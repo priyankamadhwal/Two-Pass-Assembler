@@ -33,12 +33,12 @@ The	symbol	table	gets	displayed.
 To view source code, open folder named **src**.  
 It	contains	6	files:  
 ```
-Main.java
-Pass1.java
-AddressingModesHelper.java
-AssemblerDirectiveTable.java
-MachineInstructionTable.java
-SymbolTable.java
+1. Main.java
+2. Pass1.java
+3. AddressingModesHelper.java
+4. AssemblerDirectiveTable.java
+5. MachineInstructionTable.java
+6. SymbolTable.java
 ```  
   
 ## Prerequisites
