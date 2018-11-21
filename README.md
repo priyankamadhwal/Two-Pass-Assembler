@@ -42,9 +42,9 @@ It	contains	6	files:
 ```  
   
 ## Prerequisites
-```
+<pre>
 - JAVA	Runtime	Environment
-```  
+</pre> 
 ## Supported	Instructions
   
 Programs that include	one	or more	of the	following	instructions are supported.  
