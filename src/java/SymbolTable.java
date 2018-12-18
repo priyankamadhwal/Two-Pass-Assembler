@@ -3,20 +3,19 @@ import javax.swing.table.*;
 import javax.swing.*;
 import java.awt.*;
 
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------
-// ************************************************************************ SYMBOL TABLE *******************************************************************
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------
-
+// -------------------------------------------------------------------------------------------------------------------------------------
+// ************************************************************ SYMBOL TABLE ***********************************************************
+// -------------------------------------------------------------------------------------------------------------------------------------
 
 class Symbol
 {
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
-	// **************************************************************** ATTRIBUTES OF A SYMBOL ************************************************************
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------------------
+	// ************************************************** ATTRIBUTES OF A SYMBOL ***************************************************
+	// -----------------------------------------------------------------------------------------------------------------------------
 	
 	String name;				// NAME
-	int offset;					// OFFSET
-	int size;					// SIZE
+	int offset;				// OFFSET
+	int size;				// SIZE
 	String type;				// TYPE
 	String segment;				// SEGMENT
 	
@@ -26,36 +25,36 @@ class Symbol
 		return name;
 	}
 	
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------------------
 }
 
 class SymbolTableModel extends AbstractTableModel
 {
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
-	// ****************************************************************** SYMBOL TABLE MODEL **************************************************************
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------------------
+	// ******************************************************* SYMBOL TABLE MODEL **************************************************
+	// -----------------------------------------------------------------------------------------------------------------------------
  
-	java.util.List<Symbol> symbolsList;													// List of all symbols
+	java.util.List<Symbol> symbolsList;							// List of all symbols
 	String headerList[] = new String[]{"NAME","OFFSET","SIZE","TYPE","SEGMENT"};		// Column Names
  
-	public SymbolTableModel(java.util.List<Symbol> list) 								// Constructor
+	public SymbolTableModel(java.util.List<Symbol> list) 					// Constructor
 	{
 		symbolsList = list;
 	}
  
 	@Override
-	public int getColumnCount() 														// Return no. of columns
+	public int getColumnCount() 								// Return no. of columns
 	{
 		return 5;
 	}
  
-	@Override																			// Return no. of rows
+	@Override										// Return no. of rows
 	public int getRowCount() 
 	{
 		return symbolsList.size();
 	}
  
-	@Override																			// This method is called to set the value of each cell
+	@Override								// This method is called to set the value of each cell
 	public Object getValueAt(int row, int column) 
 	{
 		Symbol entity = null;
@@ -80,14 +79,14 @@ class SymbolTableModel extends AbstractTableModel
 
 class ST
 {
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
-	// ********************************************************************** METHODS *********************************************************************
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------------------
+	// ********************************************************** METHODS **********************************************************
+	// -----------------------------------------------------------------------------------------------------------------------------
 	
 	/* symbolAlreadyExists      : 
-									OBJECTIVE 	- Check if a symbol already exists in the symbol table.
-									INPUT  		- symName : String, the symbol name which is to be checked.
-									OUTPUT 		- boolean, true if a symbol already exists, otherwise false. 
+						OBJECTIVE 	- Check if a symbol already exists in the symbol table.
+						INPUT  		- symName : String, the symbol name which is to be checked.
+						OUTPUT 		- boolean, true if a symbol already exists, otherwise false. 
 	*/
 	static boolean symbolAlreadyExists(String symName)
 	{
@@ -102,15 +101,16 @@ class ST
 		return false;
     }
 	
-	/* addToSymbolTable	        : 
-									OBJECTIVE 	- Add a given symbol to the symbol table.
-									INPUTS 		- 
-												name   : Name of the symbol.
-												offset : Offset of the symbol in current segment.
-												size   : Size of the symbol.
-												type   : Type of the symbol (VAR/SEGMENT/LABEL).
-												segment:
-									OUTPUT 		- boolean, true if symbol is successfully added to symbol table, else false.
+	/* addToSymbolTable	    : 
+						OBJECTIVE 	- Add a given symbol to the symbol table.
+						INPUTS 		- 
+								   name   : Name of the symbol.
+								   offset : Offset of the symbol in current segment.
+								   size   : Size of the symbol.
+								   type   : Type of the symbol (VAR/SEGMENT/LABEL).
+								   segment: Segment name.
+						OUTPUT 		- boolean, true if symbol is successfully added to symbol table, 
+									   else false.
 	*/
 	static boolean addToSymbolTable(String name, int offset, int size, String type, String segment)
 	{
@@ -135,9 +135,10 @@ class ST
 	}
 	
 	/* displaySymbolTable	    : 
-									OBJECTIVE 	- Display the symbol table.
-									INPUTS 		- SYMBOLS, ArrayList<Symbol>, contains all the variables, segment names and labels.
-									OUTPUT 		- void, just displays the symbol table in a new window.
+						OBJECTIVE 	- Display the symbol table.
+						INPUTS 		- SYMBOLS, ArrayList<Symbol>, contains all the variables, 
+											      segment names and labels.
+						OUTPUT 		- void, just displays the symbol table in a new window.
 	*/
 	static void displaySymbolTable(ArrayList<Symbol> SYMBOLS)
 	{
@@ -158,7 +159,7 @@ class ST
 		frame.setVisible(true);
 	}
 	
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
-	// ************************************************************************ END ***********************************************************************
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------------------
+	// ************************************************************ END ************************************************************
+	// -----------------------------------------------------------------------------------------------------------------------------
 }
