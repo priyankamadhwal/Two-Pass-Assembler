@@ -4,7 +4,7 @@ import java.util.*;
 // ***************************************************************** ASSEMBLER DIRECTIVE TABLE *************************************************************
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
-class AssemblerDirectiveTable
+class ADT
 {
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------
 	// ******************************************************************** DIRECTIVES ********************************************************************
@@ -25,10 +25,10 @@ class AssemblerDirectiveTable
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------
-	// ********************************************************************* VARIABLES ********************************************************************
+	// **************************************************************** EXTERNAL DEPENDENCIES *************************************************************
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------
-	
-	static SymbolTable st;				// Load symbol table to add symbols, if any.
+		
+			// SYMBOL TABLE - ST class : To load symbol table to add symbols, if any.
 	
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------
 	
@@ -102,7 +102,7 @@ class AssemblerDirectiveTable
 									else
 										count++;
 								}
-								if (st.addToSymbolTable(symName, Pass1.locationCounter, getDirectiveSize(directive), "VAR", Pass1.currSegment))
+								if (ST.addToSymbolTable(symName, Pass1.locationCounter, getDirectiveSize(directive), "VAR", Pass1.currSegment))
 								{
 									// Variable added successfully.
 									
@@ -119,7 +119,7 @@ class AssemblerDirectiveTable
 								/*
 									If directive is SEGMENT, then add the segment name to symbol table and clear location counter.
 								*/
-								if (st.addToSymbolTable(symName, Pass1.segNo, -5, "SEGMENT", "(ITSELF)"))
+								if (ST.addToSymbolTable(symName, Pass1.segNo, -5, "SEGMENT", "(ITSELF)"))
 								{
 									// Segment name added successfully.
 									

@@ -4,7 +4,7 @@ import java.util.*;
 // ******************************************************************* ADDRESSING MODES HELPER**************************************************************
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
-class AddressingModesHelper
+class AMHelper
 {
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------
 	// ************************************************************** TYPES OF ADDRESSING MODES ***********************************************************
@@ -25,10 +25,10 @@ class AddressingModesHelper
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------
-	// ********************************************************************* VARIABLES ********************************************************************
+	// **************************************************************** EXTERNAL DEPENDENCIES *************************************************************
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------
-	
-	static MachineInstructionTable mit;			// Load Machine Instruction Table.
+		
+			// MACHINE INSTRUCTION TABLE - MIT class : TO load machine instruction table.
 	
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------
 	
@@ -63,7 +63,7 @@ class AddressingModesHelper
 				{
 					
 					// If no. of '+' = 0, and op is a register, then register indeirect addressing mode (eg, [CX]).
-					if (mit.REG.contains(op))
+					if (MIT.REG.contains(op))
 						return AM.REGIND;									//REGISTER INDIRECT
 				}
 				
@@ -97,7 +97,7 @@ class AddressingModesHelper
 			}
 		}
 		
-		if (mit.REG.contains(op) || mit.SREG.contains(op))
+		if (MIT.REG.contains(op) || MIT.SREG.contains(op))
 			// If op is a register, then register addressing mode (eg, DX).
 			return AM.REG;													//REGISTER
 		
@@ -195,11 +195,11 @@ class AddressingModesHelper
 		else if (Arrays.asList(reg_am).contains(amOP))
 			{
 				// If a general purpose register, type is REG.
-				if (mit.REG.contains(OP))
+				if (MIT.REG.contains(OP))
 					type="REG";
 				
 				// If segment register, type is SREG.
-				else if (mit.SREG.contains(OP))
+				else if (MIT.SREG.contains(OP))
 					type="SREG";
 			}
 		

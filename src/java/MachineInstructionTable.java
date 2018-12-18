@@ -4,7 +4,7 @@ import java.util.*;
 // ***************************************************************** MACHINE INSTRUCTION TABLE *************************************************************
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
-class MachineInstructionTable
+class MIT
 
 {
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -76,9 +76,15 @@ class MachineInstructionTable
 	// ********************************************************************* VARIABLES ********************************************************************
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------
 	
-	static boolean w=false;						// If w=true, then word instruction. If w=false, then byte instruction.
+	static boolean w=false;						// If w=true, then word instruction. If w=false, then byte instruction.			
 	
-	static AddressingModesHelper am;			// Load Addressing Mode Helper class to determine addressing modes of the instructions.
+	// ----------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	// ----------------------------------------------------------------------------------------------------------------------------------------------------
+	// **************************************************************** EXTERNAL DEPENDENCIES *************************************************************
+	// ----------------------------------------------------------------------------------------------------------------------------------------------------
+		
+			// ADDRESSING MODES HELPER - AMHelper class : To determine addressing modes of the instructions.
 	
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------
 	
@@ -113,9 +119,9 @@ class MachineInstructionTable
 		String dest="";
 		String src="";
 		if (!destOP.equals(""))
-			dest = AddressingModesHelper.addressingModeIntermediate(destOP);
+			dest = AMHelper.addressingModeIntermediate(destOP);
 		if (!srcOP.equals(""))
-			src = AddressingModesHelper.addressingModeIntermediate(srcOP);
+			src = AMHelper.addressingModeIntermediate(srcOP);
 		
 		// If the source/destination operand addressing mode is undefined, then set the error flag.
 		if (dest.equals("UNDEF") || src.equals("UNDEF"))

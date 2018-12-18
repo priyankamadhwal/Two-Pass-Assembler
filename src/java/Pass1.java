@@ -8,14 +8,19 @@ import java.util.*;
 
 class Pass1
 {
+	// ----------------------------------------------------------------------------------------------------------------------------------------------------
+	// **************************************************************** EXTERNAL DEPENDENCIES *************************************************************
+	// ----------------------------------------------------------------------------------------------------------------------------------------------------
+		
+			// MACHINE INSTRUCTION TABLE - MIT class : To load machine instruction table.
+			// ASSEMBLER DIRECTIVE TABLE - ADT class : To load assembler directive table.
+			// SYMBOL TABLE 			 - ST class  : To load symbol table (initially empty).
+	
+	// ----------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------
 	// ************************************************************* VARIABLES INITIALIZATION *************************************************************
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------
-	
-	static MachineInstructionTable mit;							// LOAD MACHINE INSTRUCTION TABLE
-	static AssemblerDirectiveTable adt;							// LOAD ASSEMBLER DIRECTIVE TABLE
-	static SymbolTable st;										// LOAD SYMBOL TABLE (Initially empty)
 		
 	static ArrayList<Symbol> SYMBOLS = new ArrayList<Symbol>(); // SYMBOL TABLE (To be generated)
 	
@@ -168,7 +173,7 @@ class Pass1
 							currToken=tokens.get(index).toUpperCase();
 					
 							// Search the token in Machine Instruction Table.
-							if (MachineInstructionTable.searchInstructionTable(currToken))
+							if (MIT.searchInstructionTable(currToken))
 							{
 								// The token is an instruction.
 								
@@ -191,7 +196,7 @@ class Pass1
 									src="";
 								
 								// Get the size of instruction.
-								int size = MachineInstructionTable.getInstructionSize(currToken,dest,src);
+								int size = MIT.getInstructionSize(currToken,dest,src);
 								
 								// If size=-1, instruction is not valid.
 								if (size==-1)
@@ -207,7 +212,7 @@ class Pass1
 							// Token is not found in Machine Instruction Table.
 							
 							// Search in directive table.
-							else if (adt.searchDirectiveTable(currToken))
+							else if (ADT.searchDirectiveTable(currToken))
 							{
 								
 								// The token is an assembler directive.
@@ -225,7 +230,7 @@ class Pass1
 								   and updates location counter accordingly. 
 								   It returns an id to direct the assembler to perform further action.*/
 								   
-								int fx_id = adt.performDirectiveFunction(currToken, prevToken, nextTokens);
+								int fx_id = ADT.performDirectiveFunction(currToken, prevToken, nextTokens);
 								
 								/*
 									Check fx_id:
@@ -256,7 +261,7 @@ class Pass1
 								// Add it to symbol table.
 								
 								// If symbol is not added successfully, set the error flag and exit.
-								if (!st.addToSymbolTable(prevToken, locationCounter, -1, "LABEL", currSegment))
+								if (!ST.addToSymbolTable(prevToken, locationCounter, -1, "LABEL", currSegment))
 								{
 									errorMsg = "Line "+i+" : Duplicate declaration of "+prevToken+".";
 									break readStatements;
