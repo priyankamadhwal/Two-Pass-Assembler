@@ -316,7 +316,7 @@ class MIT
 							*/
 							if (src.equals(""))
 							{
-								if (dest.equals("REG"))					// 1									// 1
+								if (dest.equals("REG"))					// 1
 									size=1;
 								else if (dest.equals("MEM"))				// 2
 									size=4;
