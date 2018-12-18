@@ -120,7 +120,8 @@ class ADT
 								
 			case "SEGMENT"		:
 					  	  /*
-							If directive is SEGMENT, then add the segment name to symbol table and clear location counter.
+							If directive is SEGMENT, then add the segment name to symbol table and 
+							clear location counter.
 						  */
 						  if (ST.addToSymbolTable(symName, Pass1.segNo, -5, "SEGMENT", "(ITSELF)"))
 						  {
