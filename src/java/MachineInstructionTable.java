@@ -340,8 +340,9 @@ class MIT
 							*/
 								
 							if (
-									(dest.equals("REG") || dest.equals("MEM")) &&	// 1
-									(src.equals(""))										// 2
+									(dest.equals("REG") || 				// 1
+									 dest.equals("MEM")) &&				// 2
+									(src.equals(""))	
 								)
 									size=4;
 								break;
