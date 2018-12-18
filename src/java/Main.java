@@ -60,7 +60,7 @@ class Main {
 		// Create loading frame.
 		loadingFrame = new Frame("Loading...");
 		loadingFrame.setSize(500,500);
-		ImageIcon loading = new ImageIcon("./resources/rotatingIcon.gif");
+		ImageIcon loading = new ImageIcon("./res/rotatingIcon.gif");
 		loadingFrame.add(new JLabel("", loading, JLabel.CENTER));
 		loadingFrame.setLocationRelativeTo(null);
 		loadingFrame.pack(); 
