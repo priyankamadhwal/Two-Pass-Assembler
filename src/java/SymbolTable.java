@@ -71,7 +71,7 @@ class SymbolTableModel extends AbstractTableModel
 		}
 	}
 
-	public String getColumnName(int col) 												// This method will be used to display the name of columns
+	public String getColumnName(int col) 					// This method will be used to display the name of columns
 	{
 		return headerList[col];
 	}
