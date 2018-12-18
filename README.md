@@ -9,23 +9,23 @@ of	an	assembly	program.
 Follow	these	instructions	to	run	the	software:
   
 1. Add your .asm program file in the folder named docs.  
-![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/resources/img1.PNG)  
-![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/resources/img2.PNG)  
+![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img1.PNG)  
+![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img2.PNG)  
   
 2. Open firstpass.jar.  
-![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/resources/img3.PNG)  
+![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img3.PNG)  
   
 3. Enter the name of your file. (eg. swap.asm)   
 **(You can use the filename of files already present in docs folder)**    
-![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/resources/img4.png)  
+![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img4.png)  
   
 4. Click on **START PASS 1**.   
   
 5. If there are no errors, click on **SHOW SYMBOL TABLE**.  
-![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/resources/img5.PNG)  
+![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img5.PNG)  
   
 The	symbol	table	gets	displayed.  
-![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/resources/img6.PNG)  
+![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img6.PNG)  
   
 6. Click on **LOAD ANOTHER FILE** to build symbol table for another file.  
   
