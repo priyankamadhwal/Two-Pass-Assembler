@@ -2,46 +2,47 @@ import javax.swing.*;
 import java.io.*;
 import java.util.*;
 
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------
-// ********************************************************************** ASSEMBLER PASS 1 *****************************************************************
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------------------------------
+// ********************************************************** ASSEMBLER PASS 1 *********************************************************
+// -------------------------------------------------------------------------------------------------------------------------------------
 
 class Pass1
 {
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
-	// **************************************************************** EXTERNAL DEPENDENCIES *************************************************************
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------------------
+	// *************************************************** EXTERNAL DEPENDENCIES ***************************************************
+	// -----------------------------------------------------------------------------------------------------------------------------
 		
 			// MACHINE INSTRUCTION TABLE - MIT class : To load machine instruction table.
 			// ASSEMBLER DIRECTIVE TABLE - ADT class : To load assembler directive table.
-			// SYMBOL TABLE 			 - ST class  : To load symbol table (initially empty).
+			// SYMBOL TABLE 	     - ST class  : To load symbol table (initially empty).
 	
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------------------
 	
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
-	// ************************************************************* VARIABLES INITIALIZATION *************************************************************
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------------------
+	// ************************************************** VARIABLES INITIALIZATION *************************************************
+	// -----------------------------------------------------------------------------------------------------------------------------
 		
-	static ArrayList<Symbol> SYMBOLS = new ArrayList<Symbol>(); // SYMBOL TABLE (To be generated)
+	static ArrayList<Symbol> SYMBOLS = new ArrayList<Symbol>(); 	// SYMBOL TABLE (To be generated)
 	
-	static String currSegment="";								// Holds the current segment name.
-	static int segNo=0;											// Holds the segment offset.
+	static String currSegment="";					// Holds the current segment name.
+	static int segNo=0;						// Holds the segment offset.
 	
-	static int locationCounter = 0;								// Location Counter- To assign offset to program statements.
+	static int locationCounter = 0;					// Location Counter- To assign offset to program statements.
 	
-	static boolean errorFlag = false;							// This flag is set whenever there is an error in the program.+
-	static String errorMsg="";									// Holds an error message, if any.
+	static boolean errorFlag = false;				// This flag is set whenever there is an error in the program.+
+	static String errorMsg="";					// Holds an error message, if any.
 	
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------------------
 	
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
-	// *********************************************************************** METHODS ********************************************************************
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------------------
+	// ********************************************************** METHODS **********************************************************
+	// -----------------------------------------------------------------------------------------------------------------------------
 	
-	/* tokenize   : 
-					OBJECTIVE 	- This method tokenizes a given statement. It ignores all the comments and white spaces.
-					INPUT  		- currStatement : String, the statement which is to be tokenized.
-					OUTPUT 		- ArrayList<String>, An ArrayList of the tokens in the given statement. 
+	/* tokenize   		    : 
+						OBJECTIVE 	- This method tokenizes a given statement. 
+								  It ignores all the comments and white spaces.
+						INPUT  		- currStatement : String, the statement which is to be tokenized.
+						OUTPUT 		- ArrayList<String>, An ArrayList of the tokens in the given statement. 
 	*/
 	static ArrayList<String> tokenize(String currStatement)
 	{
@@ -129,10 +130,11 @@ class Pass1
 		return tokens;
 	}
 	
-	/* start    : 
-					OBJECTIVE 	- Start Pass 1 to generate a symbol table by scanning the give file and determining symbol's name, offset, size, type and segment.
-					INPUT  		- asmFile : FileReader, a .asm file on which Pass 1 is to be performed.
-					OUTPUT 		- Symbol table 
+	/* start    		    : 
+						OBJECTIVE 	- Start Pass 1 to generate a symbol table by scanning the give file and 
+								  determining symbol's name, offset, size, type and segment.
+						INPUT  		- asmFile : FileReader, a .asm file on which Pass 1 is to be performed.
+						OUTPUT 		- Symbol table 
 	*/
 	public static void start(FileReader asmFile)
 	{
@@ -147,7 +149,7 @@ class Pass1
 			String currLine=""; 				// Holds current line being read.
 			String prevToken="";				// Holds the previous token.
 			String currToken=""; 				// Holds the current token.
-			int i=0;			     			// Holds the current line no.
+			int i=0;			     		// Holds the current line no.
 			
 			// Clear location count and segment no.
 			locationCounter = 0;
@@ -226,8 +228,9 @@ class Pass1
 									index++;
 								}
 								
-								/* performDirectiveFunction() stores variables and segment names into segment table after checking directive type 
-								   and updates location counter accordingly. 
+								/* performDirectiveFunction() stores variables and segment names into 
+								   segment table after checking directive type and updates location 
+								   counter accordingly. 
 								   It returns an id to direct the assembler to perform further action.*/
 								   
 								int fx_id = ADT.performDirectiveFunction(currToken, prevToken, nextTokens);
@@ -268,8 +271,10 @@ class Pass1
 								}
 							}
 							
-							// If current token is not in machine instruction table or assembler directive table, it may be a symbol.
-							// Store current token as previous token and in the next loop, check if its a valid symbol and then store in symbol table.
+							// If current token is not in machine instruction table or 
+							// assembler directive table, it may be a symbol.
+							// Store current token as previous token and in the next loop, 
+							// check if its a valid symbol and then store in symbol table.
 							else
 								prevToken = currToken;
 							
@@ -301,7 +306,7 @@ class Pass1
 		}
 	}
 	
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
-	// ************************************************************************ END ***********************************************************************
-	// ----------------------------------------------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------------------
+	// ************************************************************ END ************************************************************
+	// -----------------------------------------------------------------------------------------------------------------------------
 }
