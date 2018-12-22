@@ -1,4 +1,4 @@
-# First	Pass
+# TWO PASS ASSEMBLER- 8086
 
 This	is	an	implementation	of	the	first	pass	of	a	two-pass	assembler	for
 **Intel	8086	Microprocessor** .	It	builds	the	Symbol	Table	for	a	 **.asm** file
@@ -12,33 +12,38 @@ Follow	these	instructions	to	run	the	software:
 ![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img1.PNG)  
 ![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img2.PNG)  
   
-2. Open firstpass.jar.  
+2. Open assembler8086.jar.  
 ![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img3.PNG)  
   
 3. Enter the name of your file. (eg. swap.asm)   
 **(You can use the filename of files already present in docs folder)**    
 ![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img4.png)  
   
-4. Click on **START PASS 1**.   
+4. Click on **START**.   
   
-5. If there are no errors, click on **SHOW SYMBOL TABLE**.  
+5. If there are no errors, click on **SHOW SYMBOL TABLE** or **SHOW ASSEMBLER LISTING**.  
 ![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img5.PNG)  
   
 The	symbol	table	gets	displayed.  
 ![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img6.PNG)  
+   
+The assembler listing gets displayed.
+![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img6.PNG)   
   
-6. Click on **LOAD ANOTHER FILE** to build symbol table for another file.  
+6. Click on **LOAD ANOTHER FILE** to build symbol table and assembler listing for another file.  
   
     
-To view source code, open folder named **src**.  
-It	contains	6	files:  
+To view source code, open folder **src/java**.  
+It	contains	8	files:  
 ```
 1. Main.java
 2. Pass1.java
-3. AddressingModesHelper.java
-4. AssemblerDirectiveTable.java
-5. MachineInstructionTable.java
-6. SymbolTable.java
+3. Pass2.java
+4. AddressingModesHelper.java
+5. AssemblerDirectiveTable.java
+6. MachineInstructionTable.java
+7. SymbolTable.java
+8. AssemblerListing.java
 ```  
   
 ## Prerequisites
