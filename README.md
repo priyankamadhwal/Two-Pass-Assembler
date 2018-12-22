@@ -100,3 +100,4 @@ Programs	that	include	one	or	more	of	the	following	addressing	modes are	supporte
 - Based Indexed           - (eg. MOV AX, [BX + 7])
 - Relative Based Indexed  - (eg. ADD AX, [BX + SI + 7])
 ```
+**Note:** Immediate value is preceded by'#'. It ends with 'D', 'H' or 'B' for decimal, hexadecimal or binary values respectively.
