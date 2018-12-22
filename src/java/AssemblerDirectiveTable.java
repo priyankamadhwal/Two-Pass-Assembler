@@ -177,11 +177,12 @@ class ADT
 	}
 	
 	/* performDirectiveFunctionPass2 : 
-						OBJECTIVE 	- Reserves space in memory after checking directive type and update location counter accordingly.
+						OBJECTIVE 	- Reserves space in memory after checking directive type and update 
+								  location counter accordingly.
 						INPUTS  	-
-								   directive  : String, an assembly directive.
-								   nextTokens : ArrayList<String>, operands list.
-								   newLine	  : Listing, a new line assembler listing.
+								   directive  	: String, an assembly directive.
+								   nextTokens 	: ArrayList<String>, operands list.
+								   newLine	: Listing, a new line assembler listing.
 						OUTPUT 		- int, an id according to function performed:					
 								   0 - Symbol is added successfully, read next token.
 								   1 - Read next line.
