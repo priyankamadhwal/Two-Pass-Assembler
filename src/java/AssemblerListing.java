@@ -9,9 +9,9 @@ class Listing
 	// *************************************************** ATTRIBUTES OF LISTING ***************************************************
 	// -----------------------------------------------------------------------------------------------------------------------------
 	
-	int lineNo;						// LINE NO.		
+	int lineNo;					// LINE NO.		
 	String loc="";					// LOCATION			
-	String machineCode="";			// MACHINE CODE			
+	String machineCode="";				// MACHINE CODE			
 	String srcCode="";				// SOURCE CODE	
 
 	// Return line.
@@ -68,27 +68,28 @@ class AssemblerListingModel extends AbstractTableModel
 	// ************************************************** ASSEMBLER LISTING MODEL **************************************************
 	// -----------------------------------------------------------------------------------------------------------------------------
  
-	java.util.List<Listing> assemblyListing;							// List of all the lines in assembler listing
+	java.util.List<Listing> assemblyListing;	// List of all the lines in assembler listing
+	
 	String headerList[] = new String[]{"LOCATION","MACHINE CODE","LINE NO.","SOURCE CODE"};		// Column Names
  
-	public AssemblerListingModel(java.util.List<Listing> list) 					// Constructor
+	public AssemblerListingModel(java.util.List<Listing> list) 	// Constructor
 	{
 		assemblyListing = list;
 	}
  
 	@Override
-	public int getColumnCount() 								// Return no. of columns
+	public int getColumnCount() 					// Return no. of columns
 	{
 		return 4;
 	}
  
-	@Override										// Return no. of rows
+	@Override							// Return no. of rows
 	public int getRowCount() 
 	{
 		return assemblyListing.size();
 	}
  
-	@Override								// This method is called to set the value of each cell
+	@Override							// This method is called to set the value of each cell
 	public Object getValueAt(int row, int column) 
 	{
 		Listing entity = null;
@@ -104,7 +105,7 @@ class AssemblerListingModel extends AbstractTableModel
 		}
 	}
 
-	public String getColumnName(int col) 					// This method will be used to display the name of columns
+	public String getColumnName(int col) 				// This method will be used to display the name of columns
 	{
 		return headerList[col];
 	}
