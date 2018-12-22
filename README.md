@@ -28,7 +28,7 @@ The	symbol	table	gets	displayed.
 ![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img6.PNG)    
      
 The assembler listing gets displayed.    
-![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img6.PNG)    
+![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img7.PNG)    
     
 6. Click on **LOAD ANOTHER FILE** to build symbol table and assembler listing for another file.  
   
@@ -92,7 +92,7 @@ Programs	that	include	one	or	more	of the	following	directives	are supported.
 
 Programs	that	include	one	or	more	of	the	following	addressing	modes are	supported.  
  ``` 
-- Immediate	              -	(	eg.	ADD	AX,	100H	)
+- Immediate               -	(	eg.	ADD	AX,	100H	)
 - Direct	                -	(	eg.	MOV	AX,	[1592H]	)
 - Register	              -	(	eg.	ADD	BX,	AX	)
 - Register	Indirect	    -	(	eg.	MOV	AX,	[BX]	)
