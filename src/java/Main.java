@@ -15,7 +15,7 @@ class Main {
 	// ********************************************************** VARIABLES ********************************************************
 	// -----------------------------------------------------------------------------------------------------------------------------
 	
-	static final String HINT = "eg, swap.asm";			// Hint for the text field where file name is to be entered.
+	static final String HINT = "eg, swap.asm";	// Hint for the text field where file name is to be entered.
 	
 	static boolean errorFlag = false;		// This flag is set whenever there is an error in the program.
 	static String errorMsg = "";			// Holds an error message, if any.
@@ -40,13 +40,13 @@ class Main {
 	static Frame loadingFrame;			// To create a loading window
 	static Panel P1;				// Panel 1
 	static Panel P2;				// Panel 2
-	static JLabel title;				// (label)					       TITLE
-	static JLabel lFileName;			// (label)					  ENTER FILE NAME
-	static JTextField tFileName;			// (text field)				        _____________________	
-	static JButton startBtn;			// (button)					|   START    |
-	static JButton showSymTabBtn;			// (button)					| SHOW SYMBOL TABLE |
+	static JLabel title;				// (label)					         TITLE
+	static JLabel lFileName;			// (label)					    ENTER FILE NAME
+	static JTextField tFileName;			// (text field)				        _______________________	
+	static JButton startBtn;			// (button)					|        START        |
+	static JButton showSymTabBtn;			// (button)					|  SHOW SYMBOL TABLE  |
 	static JButton showAsmLstBtn;			// (button)					|SHOW ASSEMBLY LISTING|
-	static JButton loadNewFileBtn;			// (button)					|   LOAD NEW FILE   |
+	static JButton loadNewFileBtn;			// (button)					|    LOAD NEW FILE    |
 	
 	// -----------------------------------------------------------------------------------------------------------------------------
 	
@@ -87,7 +87,7 @@ class Main {
 				// Change main window.
 				parentFrame.setSize(500,500);
 						
-				// Show pass 1 is successful message and disable the startBtn button.
+				// Show pass 1 and pass 2 successful message and disable the startBtn button.
 				startBtn.setText("Pass 1 and Pass 2 successful!");
 				startBtn.setEnabled(false);
 						
@@ -145,6 +145,7 @@ class Main {
 					{ 
 						// Clear the previous symbol table of pass 1.
 						Pass1.SYMBOLS.clear();
+						// Clear the previous listing of pass 2.
 						Pass2.LISTING.clear();
 						parentFrame.dispose();
 						createMainWindow();
@@ -160,10 +161,11 @@ class Main {
 	}
 	
 	/* loadFile        	    : 
-						OBJECTIVE 	- Load the file to assemble and start Pass 1, 
+						OBJECTIVE 	- Load the file to assemble and start Pass 1 and Pass 2, 
 						                  show error messages if file cannot be loaded.
 						INPUT  		- fileName : String, the name of the file which is to be assembled.
-						OUTPUT 		- void, Starts pass 1 to generate symbol table. 
+						OUTPUT 		- void, Starts pass 1 to generate symbol table and
+								  pass 2 to generate assembly listing. 
 	*/
 	static void loadFile(String fileName)
 	{
@@ -193,10 +195,13 @@ class Main {
 
 					// Start pass 1.
 					Pass1.start(new FileReader(fileName));
+					
 					System.out.println("\n\n\n");
+					
+					// Start pass 2.
 					Pass2.start(new FileReader(fileName));
 					
-					// If pass 1 was successful, change the main screen to show results of Pass 1.
+					// If successful, change the main screen to show results of Pass 1 and Pass 2.
 					if (!Main.errorFlag)
 						showPass1Results(fileName.substring(7));
 					// Else, again create main screen.
