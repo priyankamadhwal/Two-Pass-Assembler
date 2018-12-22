@@ -23,10 +23,10 @@ class MIT
 	// -----------------------------------------------------------------------------------------------------------------------------
 	
 	// 1. REG- General Purpose Registers
-	static List<List<String>> REG;					// Load from 'REG.txt'.
+	static List<List<String>> REG;				// Load from 'REG.txt'.
 	
 	// 2. SREG- Segment Registers
-	static List<List<String>> SREG;					// Load from 'SREG.txt'.
+	static List<List<String>> SREG;				// Load from 'SREG.txt'.
 	
 	// 3. MEM- Memory	: [BX], [BX+SI+7], variable, etc
 	
