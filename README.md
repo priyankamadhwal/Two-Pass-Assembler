@@ -1,7 +1,7 @@
 # TWO PASS ASSEMBLER- 8086
 
-This	is	an	implementation	of	the	first	pass	of	a	two-pass	assembler	for
-**Intel	8086	Microprocessor** .	It	builds	the	Symbol	Table	for	a	 **.asm** file
+This	is	an	implementation	of	a	two-pass	assembler	for
+**Intel	8086	Microprocessor** .	It	builds	the	Symbol	Table and Assembler Listing	for	a	 **.asm** file
 of	an	assembly	program.
 
 ## Getting	Started
@@ -23,13 +23,13 @@ Follow	these	instructions	to	run	the	software:
   
 5. If there are no errors, click on **SHOW SYMBOL TABLE** or **SHOW ASSEMBLER LISTING**.  
 ![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img5.PNG)  
-  
-The	symbol	table	gets	displayed.  
-![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img6.PNG)  
-   
-The assembler listing gets displayed.
-![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img6.PNG)   
-  
+    
+The	symbol	table	gets	displayed.    
+![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img6.PNG)    
+     
+The assembler listing gets displayed.    
+![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img6.PNG)    
+    
 6. Click on **LOAD ANOTHER FILE** to build symbol table and assembler listing for another file.  
   
     
@@ -53,7 +53,7 @@ It	contains	8	files:
 ## Supported	Instructions
   
 Programs that include	one	or more	of the	following	instructions are supported.  
-
+```
 - MOV    
 - LDS  
 - LEA  
@@ -72,11 +72,12 @@ Programs that include	one	or more	of the	following	instructions are supported.
 - IDIV
 - DAA
 - DAS
-
+```
+  
 ## Supported	Directives
 
 Programs	that	include	one	or	more	of the	following	directives	are supported.
-  
+ ``` 
 - DB
 - DW
 - DD
@@ -85,11 +86,12 @@ Programs	that	include	one	or	more	of the	following	directives	are supported.
 - ENDS
 - SEGMENT
 - HLT
+```
   
 ## Supported	Addressing	Modes
 
 Programs	that	include	one	or	more	of	the	following	addressing	modes are	supported.  
-  
+ ``` 
 - Immediate	              -	(	eg.	ADD	AX,	100H	)
 - Direct	                -	(	eg.	MOV	AX,	[1592H]	)
 - Register	              -	(	eg.	ADD	BX,	AX	)
@@ -97,4 +99,4 @@ Programs	that	include	one	or	more	of	the	following	addressing	modes are	supporte
 - Register	Relative	    -	(	eg.	ADD	AX,	[BX	+	SI]	)
 - Based	Indexed	          -	(	eg.	MOV	AX,	[BX	+	7]	)
 - Relative	Based	Indexed	-	(	eg.	ADD	AX,	[BX	+	SI	+	7]	)  
-
+```
