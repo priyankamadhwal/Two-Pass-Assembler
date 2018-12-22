@@ -310,7 +310,6 @@ class Pass1
 			else
 			{
 				// Symbol table generated successfully.
-				// Do nothing.
 				/*for (Symbol sym : SYMBOLS)
 				{
 					System.out.println(sym.name+" "+sym.segment+" "+sym.type+" "+sym.offset+" "+sym.size);
