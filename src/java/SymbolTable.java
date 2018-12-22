@@ -117,7 +117,7 @@ class ST
 		// If the symbol already exists, then set error flag and return.
 		if (symbolAlreadyExists(name))
 		{
-			Pass1.errorFlag = true;
+			Main.errorFlag = true;
 			return false;
 		}
 		// Else add the given symbol to symbol table.

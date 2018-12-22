@@ -4,8 +4,8 @@
 ; Variables initialization.
 DATA SEGMENT  
 
-    NUM1 DB 20H
-    NUM2 DB 45H
+    NUM1 DB #20H
+    NUM2 DB #45H
     
 DATA ENDS 
 

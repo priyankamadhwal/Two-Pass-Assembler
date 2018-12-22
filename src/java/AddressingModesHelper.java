@@ -15,10 +15,10 @@ class AMHelper
 		IMM,				// Immediate
 		DIR,				// Direct
 		REG,				// Register
-		REGIND,				// Register Indirect
-		REGREL,				// Register Relative
-		BASIND,				// Based Indexed
-		RELBASIND,			// Relative Based Indexed
+		REGIND,				// Register Indirect				
+		REGREL,				// Register Relative				
+		BASIND,				// Based Indexed								
+		RELBASIND,			// Relative Based Indexed			
 		UNDEF				// Undefined
 	}
 	
@@ -63,8 +63,8 @@ class AMHelper
 				{
 					
 					// If no. of '+' = 0, and op is a register, then register indeirect addressing mode.
-					// (eg, [CX])
-					if (MIT.REG.contains(op))
+					// (eg, [BX])
+					if (MIT.searchRegTable(op))
 						return AM.REGIND;				//REGISTER INDIRECT
 				}
 				
@@ -89,19 +89,21 @@ class AMHelper
 				else
 				{
 					// Error.
-					Pass1.errorFlag = true;
+					Main.errorFlag = true;
+					Main.errorMsg = "Undefined addressing mode.";
 					return AM.UNDEF;					//UNDEFINED
 				}
 			}
 			else
 			{
 				// Error.
-				Pass1.errorFlag = true;
+				Main.errorFlag = true;
+				Main.errorMsg = "Undefined addressing mode.";
 				return AM.UNDEF;						//UNDEFINED
 			}
 		}
 		
-		if (MIT.REG.contains(op) || MIT.SREG.contains(op))
+		if (MIT.searchRegTable(op) || MIT.searchSregTable(op))
 			// If op is a register, then register addressing mode.
 			// (eg, DX)
 			return AM.REG;								//REGISTER
@@ -135,9 +137,9 @@ class AMHelper
 			
 			// DECIMAL VALUE
 			//if (op.matches("[0-9]+"))
-			if(isNumeric(op.substring(1)))
+			if(op.charAt(op.length()-1)=='D' && isNumeric(op.substring(1,op.length()-1)))
 			{
-				op=op.substring(1,op.length());
+				op=op.substring(1,op.length()-1);
 				System.out.print("Decimal ");
 				return AM.IMM;
 			}
@@ -164,9 +166,8 @@ class AMHelper
 	static final AM[] reg_am = {AM.REG};									//Register
 	static final AM[] imm_am = {AM.IMM};									//Immediate
 	
-	/* addressingModeIntermediate: 
-						OBJECTIVE 	- An intermediate function to return the operand type based on 
-						            	  addressing mode.
+	/* getOperandType: 
+						OBJECTIVE 	- To find the operand type based on addressing mode.
 						INPUT	 	- OP : String, operand whose type is to be found.
 						OUTPUT 		- String, operand type:
 								  REG	- 	General purpose register
@@ -174,7 +175,7 @@ class AMHelper
 								  MEM	- 	Memory
 								  IMM	- 	Immediate
 	*/
-	static String addressingModeIntermediate(String OP)
+	static String getOperandType(String OP)
 	{
 		
 		// Get the addressing mode of operand.
@@ -203,11 +204,16 @@ class AMHelper
 		else if (Arrays.asList(reg_am).contains(amOP))
 			{
 				// If a general purpose register, type is REG.
-				if (MIT.REG.contains(OP))
-					type="REG";
+				if (MIT.searchRegTable(OP))
+				{
+					if (OP.equals("AX") || OP.equals("AL"))
+						type="ACC";
+					else
+						type="REG";
+				}
 				
 				// If segment register, type is SREG.
-				else if (MIT.SREG.contains(OP))
+				else if (MIT.searchSregTable(OP))
 					type="SREG";
 			}
 		

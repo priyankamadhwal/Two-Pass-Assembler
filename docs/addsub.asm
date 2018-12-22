@@ -6,10 +6,10 @@
 DATA SEGMENT
     
     ; Variable initialization.
-    X       DB  15H
-    Y       DB  30H
-    Z       DB  10H
-    ARR     DW  11H, 22H, 33H, 44H
+    X       DB  #15H
+    Y       DB  #30H
+    Z       DB  #10H
+    ARR     DW  #11H, #22H, #33H, #44H
     result  DB  ?
     
 ; Data segment ends.
@@ -29,7 +29,7 @@ CODE SEGMENT
     ;Evaluating the expression.
     L3 : MOV AL      ,   X       ; AL <- X
     L4 : ADD AL      ,   Y       ; AL <- AL + Y
-    L5 : ADD AL      ,   24H     ; AL <- AL + 24H
+    L5 : ADD AL      ,   #24H    ; AL <- AL + 24H
     L6 : SUB AL      ,   Z       ; AL <- AL - Z
     L7 : MOV result  ,   AL      ; result <- AL
     

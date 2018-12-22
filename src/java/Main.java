@@ -17,6 +17,10 @@ class Main {
 	
 	static final String HINT = "eg, swap.asm";			// Hint for the text field where file name is to be entered.
 	
+	static boolean errorFlag = false;		// This flag is set whenever there is an error in the program.
+	static String errorMsg = "";			// Holds an error message, if any.
+	static int locationCounter = 0;			// Location Counter- To assign offset to program statements.
+	
 	// -----------------------------------------------------------------------------------------------------------------------------
 	
 	// -----------------------------------------------------------------------------------------------------------------------------
@@ -39,8 +43,9 @@ class Main {
 	static JLabel title;				// (label)					       TITLE
 	static JLabel lFileName;			// (label)					  ENTER FILE NAME
 	static JTextField tFileName;			// (text field)				        _____________________	
-	static JButton startPass1Btn;			// (button)					|   START PASS 1    |
+	static JButton startBtn;			// (button)					|   START    |
 	static JButton showSymTabBtn;			// (button)					| SHOW SYMBOL TABLE |
+	static JButton showAsmLstBtn;			// (button)					|SHOW ASSEMBLY LISTING|
 	static JButton loadNewFileBtn;			// (button)					|   LOAD NEW FILE   |
 	
 	// -----------------------------------------------------------------------------------------------------------------------------
@@ -82,9 +87,9 @@ class Main {
 				// Change main window.
 				parentFrame.setSize(500,500);
 						
-				// Show pass 1 is successful message and disable the startPass1Btn button.
-				startPass1Btn.setText("Pass 1 successful!");
-				startPass1Btn.setEnabled(false);
+				// Show pass 1 is successful message and disable the startBtn button.
+				startBtn.setText("Pass 1 and Pass 2 successful!");
+				startBtn.setEnabled(false);
 						
 				// Show file name in the text field and disable text field.
 				tFileName.setText(fileName);
@@ -92,7 +97,7 @@ class Main {
 				tFileName.setEnabled(false);
 						
 				// Add new components to panel P1.
-				P1.setLayout(new GridLayout(6,1));
+				P1.setLayout(new GridLayout(7,1));
 						
 				// A button to show symbol table.
 				showSymTabBtn = new JButton("SHOW SYMBOL TABLE");
@@ -109,6 +114,22 @@ class Main {
 						ST.displaySymbolTable(Pass1.SYMBOLS);
 					}  
 				}); 
+				
+				// A button to show assembler listing.
+				showAsmLstBtn = new JButton("SHOW ASSEMBLER LISTING");
+				showAsmLstBtn.setFont(new Font("Lucida",Font.BOLD,15));
+				showAsmLstBtn.setForeground(Color.WHITE);
+				showAsmLstBtn.setBackground(Color.BLACK);
+				P1.add(showAsmLstBtn);
+				showAsmLstBtn.setVisible(true);
+				// When button is clicked, show assembler listing.
+				showAsmLstBtn.addActionListener(new ActionListener()
+				{  
+					public void actionPerformed(ActionEvent e)
+					{ 
+						Listing.displayAssemblerListing(Pass2.LISTING);
+					}  
+				});
 		
 				// A button to load new file.
 				loadNewFileBtn=new JButton("LOAD ANOTHER FILE");
@@ -124,6 +145,7 @@ class Main {
 					{ 
 						// Clear the previous symbol table of pass 1.
 						Pass1.SYMBOLS.clear();
+						Pass2.LISTING.clear();
 						parentFrame.dispose();
 						createMainWindow();
 					}  
@@ -165,12 +187,17 @@ class Main {
 				{
 					// Open file.
 					FileReader asmFile = new FileReader(fileName);
+					
+					// Load machine information.
+					MIT.loadMachineInfo();
 
 					// Start pass 1.
-					Pass1.start(asmFile);
+					Pass1.start(new FileReader(fileName));
+					System.out.println("\n\n\n");
+					Pass2.start(new FileReader(fileName));
 					
 					// If pass 1 was successful, change the main screen to show results of Pass 1.
-					if (!Pass1.errorFlag)
+					if (!Main.errorFlag)
 						showPass1Results(fileName.substring(7));
 					// Else, again create main screen.
 					else
@@ -227,20 +254,20 @@ class Main {
 		tFileName.setBackground(Color.GREEN);
 		
 		// Start Pass 1 button
-		startPass1Btn = new JButton("START PASS 1");
-		startPass1Btn.setFont(new Font("Lucida",Font.BOLD,15));
-		startPass1Btn.setForeground(Color.WHITE);
-		startPass1Btn.setBackground(Color.BLACK);
+		startBtn = new JButton("START");
+		startBtn.setFont(new Font("Lucida",Font.BOLD,15));
+		startBtn.setForeground(Color.WHITE);
+		startBtn.setBackground(Color.BLACK);
 		
 		// Request focus to the start pass 1 button when window starts.
-		startPass1Btn.requestFocusInWindow();	
+		startBtn.requestFocusInWindow();	
 		
 		// Add components to panel.
 		P1.setLayout(new GridLayout(4,1));
 		P1.add(title);
 		P1.add(lFileName);
 		P1.add(tFileName);
-		P1.add(startPass1Btn);
+		P1.add(startBtn);
 		P2.add(P1);
 		
 		// Add panels to main window and set visibility to true.
@@ -266,7 +293,7 @@ class Main {
 		});
 		
 		// For Start Pass 1 button - when this button is clicked, load file and start pass 1 of assembler.
-		startPass1Btn.addActionListener(new ActionListener()
+		startBtn.addActionListener(new ActionListener()
 		{  
 			public void actionPerformed(ActionEvent e)
 			{ 
@@ -295,6 +322,8 @@ class Main {
 		createMainWindow();
 		
 	}
+	
+	//jar -cvfe assembler8086.jar Main *.class
 	
 	// -----------------------------------------------------------------------------------------------------------------------------
 	// ************************************************************ END ************************************************************

@@ -3,9 +3,9 @@
 ; Data segment begins.
 DATA SEGMENT 
     
-    NUM1 DB 05
-    NUM2 DB 06
-    RESULT DB 0   
+    NUM1 DB #05D
+    NUM2 DB #06D
+    RESULT DB #0D   
     
 ; Data segment ends.
 DATA ENDS

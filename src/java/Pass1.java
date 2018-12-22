@@ -19,19 +19,14 @@ class Pass1
 	// -----------------------------------------------------------------------------------------------------------------------------
 	
 	// -----------------------------------------------------------------------------------------------------------------------------
-	// ************************************************** VARIABLES INITIALIZATION *************************************************
+	// ********************************************************** VARIABLES ********************************************************
 	// -----------------------------------------------------------------------------------------------------------------------------
 		
 	static ArrayList<Symbol> SYMBOLS = new ArrayList<Symbol>(); 	// SYMBOL TABLE (To be generated)
 	
 	static String currSegment="";					// Holds the current segment name.
 	static int segNo=0;						// Holds the segment offset.
-	
-	static int locationCounter = 0;					// Location Counter- To assign offset to program statements.
-	
-	static boolean errorFlag = false;				// This flag is set whenever there is an error in the program.+
-	static String errorMsg="";					// Holds an error message, if any.
-	
+
 	// -----------------------------------------------------------------------------------------------------------------------------
 	
 	// -----------------------------------------------------------------------------------------------------------------------------
@@ -152,7 +147,7 @@ class Pass1
 			int i=0;			     		// Holds the current line no.
 			
 			// Clear location count and segment no.
-			locationCounter = 0;
+			Main.locationCounter = 0;
 			segNo = 0;
 			
 			System.out.println("TOKENS : ");
@@ -197,18 +192,42 @@ class Pass1
 								else
 									src="";
 								
+								String destOP="";
+								String srcOP="";
+								if (!dest.equals(""))
+									destOP = AMHelper.getOperandType(dest);
+								else
+									destOP = "n";
+								if (!src.equals(""))
+									srcOP = AMHelper.getOperandType(src);
+								else
+									srcOP = "n";
+								
 								// Get the size of instruction.
-								int size = MIT.getInstructionSize(currToken,dest,src);
+								int size = MIT.getInstructionSize(currToken,destOP,srcOP, dest, src);
 								
 								// If size=-1, instruction is not valid.
 								if (size==-1)
 								{
-									errorMsg="Line "+i+" : Invalid instruction format.";
-									errorFlag = true;
+									if (srcOP.equals("ACC") || destOP.equals("ACC"))
+									{
+								if (srcOP.equals("ACC"))
+									srcOP = "REG";
+								if (destOP.equals("ACC"))
+									destOP = "REG";
+								size = MIT.getInstructionSize(currToken,destOP,srcOP, dest, src);
+									}
+									if (size == -1)
+									{
+									Main.errorMsg="Line "+i+" : Invalid instruction format.";
+									Main.errorFlag = true;
+									}
+									else
+										Main.locationCounter+=size;
 								}
 								else
 									// Add size of instruction to location counter.
-									locationCounter+=size;
+									Main.locationCounter+=size;
 							}
 							
 							// Token is not found in Machine Instruction Table.
@@ -233,7 +252,7 @@ class Pass1
 								   counter accordingly. 
 								   It returns an id to direct the assembler to perform further action.*/
 								   
-								int fx_id = ADT.performDirectiveFunction(currToken, prevToken, nextTokens);
+								int fx_id = ADT.performDirectiveFunctionPass1(currToken, prevToken, nextTokens);
 								
 								/*
 									Check fx_id:
@@ -248,8 +267,8 @@ class Pass1
 									case 0 : break readTokens;
 									case 1 : break readTokens;
 									case 2 : break readStatements;
-									case 3 : errorMsg = "Line "+i+" : Duplicate declaration of "+prevToken+"."; break readStatements;
-									case 4 : errorMsg = "Line "+i+" : Mismatched- "+prevToken+" ENDS."; break readStatements;
+									case 3 : Main.errorMsg = "Line "+i+" : Duplicate declaration of "+prevToken+"."; break readStatements;
+									case 4 : Main.errorMsg = "Line "+i+" : Mismatched- "+prevToken+" ENDS."; break readStatements;
 									default: break readTokens;
 								}
 							
@@ -264,9 +283,9 @@ class Pass1
 								// Add it to symbol table.
 								
 								// If symbol is not added successfully, set the error flag and exit.
-								if (!ST.addToSymbolTable(prevToken, locationCounter, -1, "LABEL", currSegment))
+								if (!ST.addToSymbolTable(prevToken, Main.locationCounter, -1, "LABEL", currSegment))
 								{
-									errorMsg = "Line "+i+" : Duplicate declaration of "+prevToken+".";
+									Main.errorMsg = "Line "+i+" : Duplicate declaration of "+prevToken+".";
 									break readStatements;
 								}
 							}
@@ -278,14 +297,14 @@ class Pass1
 							else
 								prevToken = currToken;
 							
-							if (errorFlag)
+							if (Main.errorFlag)
 								break readStatements;
 						}
 				}
 			
 			// If there is an error in the program, print error message.
-			if (errorFlag)
-				JOptionPane.showMessageDialog(null, errorMsg, "Pass1 Error", 1);
+			if (Main.errorFlag)
+				JOptionPane.showMessageDialog(null, Main.errorMsg, "Pass1 Error", 1);
 			
 			// If there is no error, print symbol table.
 			else
