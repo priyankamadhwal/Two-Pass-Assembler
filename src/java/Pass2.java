@@ -32,7 +32,8 @@ class Pass2
 	
 	
 	/* start    		    : 
-						OBJECTIVE 	- Start Pass 2 to generate an assembler listing by scanning the given file and converting source code to machine code.
+						OBJECTIVE 	- Start Pass 2 to generate an assembler listing by scanning the given 
+								  file and converting source code to machine code.
 						INPUT  		- asmFile : FileReader, a .asm file on which Pass 1 is to be performed.
 						OUTPUT 		- Assembler Listing 
 	*/
@@ -47,7 +48,7 @@ class Pass2
 			// A list to store tokens.
 			ArrayList<String> tokens = new ArrayList<String>();
 			
-			String currLine="";					// Holds the current line.
+			String currLine="";				// Holds the current line.
 			String currToken=""; 				// Holds the current token.
 			int i=0;			     		// Holds the current line no.
 			
@@ -96,7 +97,8 @@ class Pass2
 									index++;
 								}
 								
-								/* performDirectiveFunction() reserve space in the memory for data directives and convert operands to machine code.*/
+								/* performDirectiveFunction() reserve space in the memory for data 
+								directives and convert operands to machine code.*/
 								   
 								int fx_id = ADT.performDirectiveFunctionPass2(currToken, newLine, nextTokens);
 								
