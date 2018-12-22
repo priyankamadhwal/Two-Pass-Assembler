@@ -281,12 +281,12 @@ class MIT
 				}
 					
 				String opcode = result.get(0).get(3);				// OPCODE
-				String d = result.get(0).get(4);					// D
-				String w = result.get(0).get(5);					// W
-				String mod = result.get(0).get(6);					// MOD
-				String reg = result.get(0).get(7);					// REG
-				String rm = result.get(0).get(8);					// RM
-				String disp = result.get(0).get(9);					// DISP
+				String d = result.get(0).get(4);				// D
+				String w = result.get(0).get(5);				// W
+				String mod = result.get(0).get(6);				// MOD
+				String reg = result.get(0).get(7);				// REG
+				String rm = result.get(0).get(8);				// RM
+				String disp = result.get(0).get(9);				// DISP
 				String data = result.get(0).get(10);				// DATA
 				
 				if (opcode.contains("x"))
