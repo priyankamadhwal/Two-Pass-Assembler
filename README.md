@@ -17,7 +17,7 @@ Follow	these	instructions	to	run	the	software:
   
 3. Enter the name of your file. (eg. swap.asm)   
 **(You can use the filename of files already present in docs folder)**    
-![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img4.png)  
+![](https://github.com/priyankamadhwal/Two-Pass-Assembler/blob/master/res/img4.PNG)  
   
 4. Click on **START**.   
   
@@ -92,11 +92,11 @@ Programs	that	include	one	or	more	of the	following	directives	are supported.
 
 Programs	that	include	one	or	more	of	the	following	addressing	modes are	supported.  
  ``` 
-- Immediate               -	(	eg.	ADD	AX,	100H	)
-- Direct	                -	(	eg.	MOV	AX,	[1592H]	)
-- Register	              -	(	eg.	ADD	BX,	AX	)
-- Register	Indirect	    -	(	eg.	MOV	AX,	[BX]	)
-- Register	Relative	    -	(	eg.	ADD	AX,	[BX	+	SI]	)
-- Based	Indexed	          -	(	eg.	MOV	AX,	[BX	+	7]	)
-- Relative	Based	Indexed	-	(	eg.	ADD	AX,	[BX	+	SI	+	7]	)  
+- Immediate               - (eg. ADD AX, #100H)
+- Direct                  - (eg. MOV AX, num)
+- Register                - (eg. ADD BX, AX)  
+- Register Indirect       - (eg. MOV AX, [BX])
+- Register Relative       - (eg. ADD AX, [BX + SI])
+- Based Indexed           - (eg. MOV AX, [BX + 7])
+- Relative Based Indexed  - (eg. ADD AX, [BX + SI + 7])
 ```
